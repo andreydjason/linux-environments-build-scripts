@@ -3,9 +3,9 @@
 # its more safe and clean, since you MUST KNOW what you're doing with these scripts :-)
 #
 ### Good Linux distros to use:
-# - Linux Mint KDE/META/
-# - Netrunner | KDE GNU/Linux
-# - Another of your option :-)
+# · Linux Mint KDE/META/
+# · Another of your option :-)
+# x Netrunner | KDE GNU/Linux - maybe this is not an option for now...
 #
 # This script install an Linux/Ubuntu for PHP/Ruby/Rails/MySQL/PostgreSQL development environment.
 # Installs all dependencies, including:
