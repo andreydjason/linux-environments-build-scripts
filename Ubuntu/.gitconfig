@@ -1,0 +1,5 @@
+[user]
+	name = Name Here
+	email = email@example.com
+[merge]
+	tool = kdiff3

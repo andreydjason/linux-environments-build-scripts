@@ -1,0 +1,55 @@
+<VirtualHost *:8080>
+  ServerName example.local
+  ServerAlias www.example.local *.example.local
+
+  XSendFile On
+  XSendFileAllowAbove on
+
+  #AddType application/x-httpd-php .php
+  #AddHandler x-httpd-php .php
+
+  DocumentRoot /home/andrey/rails_apps/example/public
+
+  <Directory /home/andrey/rails_apps/example/public>
+    AllowOverride All
+    Options +FollowSymlinks +ExecCGI
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+  <Directory /home/andrey/rails_apps/example/public/phpapp>
+    #Options +ExecCGI
+  </Directory>
+
+  <Proxy balancer://unicornservers>
+    BalancerMember http://127.0.0.1:8080
+  </Proxy>
+
+  RewriteEngine On
+
+  # Maintenance page
+  RewriteCond %{REQUEST_URI} !\.(js|css|gif|jpg|png)$
+  RewriteCond %{REQUEST_URI} !robots.txt
+  RewriteCond %{REQUEST_URI} !/admin
+  RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
+  RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+  RewriteRule ^(.*)$ /system/maintenance.html [PT,QSA,L]
+
+  # Redirect all non-static requests to unicorn
+  RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f
+  RewriteRule ^/(.*)$ balancer://unicornservers%{REQUEST_URI} [P,QSA,L]
+
+  ProxyPass / balancer://unicornservers/
+  ProxyPassReverse / balancer://unicornservers/
+  ProxyPreserveHost on
+
+  <Proxy *>
+    Order deny,allow
+    Allow from all
+  </Proxy>
+
+  # Custom log file locations
+  ErrorLog  /home/andrey/rails_apps/example/log/error.log
+  CustomLog /home/andrey/rails_apps/example/log/access.log combined
+
+</VirtualHost>

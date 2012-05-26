@@ -1,0 +1,114 @@
+#! /bin/bash
+
+# Linux and Darwin/BSD have different ways to get color
+# in `ls`
+if [[ $platform == 'linux' ]]; then
+   alias ls='ls --color=auto'
+elif [[ $platform == 'darwin' ]]; then
+   alias ls='ls -G'
+fi
+
+#
+# General aliases
+#
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls'
+alias c='clear'
+
+alias home='cd ~'
+alias _='cd -'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../../'
+
+#
+# Git
+#
+#alias git='hub'
+alias ga='git add'
+
+# Commiting
+alias gp='git push'
+complete -o default -o nospace -F _git_push gp
+
+alias gpl='git pull'
+complete -o default -o nospace -F _git_pull gpl
+
+alias gd='git diff'
+complete -o default -o nospace -F _git_diff gd
+
+alias gc='git commit -v'
+alias gca='git commit -av'
+alias gcp='git commit -p'
+
+alias gs='git status -sb'
+
+alias gb='git branch -v'
+complete -o default -o nospace -F _git_branch gb
+
+alias ggraph='git log --graph --pretty=oneline --abbrev-commit'
+
+alias glog='git log --oneline'
+complete -o default -o nospace -F _git_log glog
+
+alias gm='git merge'
+complete -o default -o nospace -F _git_merge gm
+
+alias gco='git checkout'
+complete -o default -o nospace -F _git_checkout gco
+
+
+# Typo correctors
+alias k='kill -9'
+alias kil='kill'
+alias kall='killall -9'
+
+
+# SSH
+alias ssh_server="ssh andrey@192.168.1.10"
+
+
+#
+# Ruby
+#
+alias gems='gem list'
+#alias rbxc='find . -name "*.rbc" -print0 | xargs -0 rm' # ???
+alias be='bundle exec'
+alias ber='bundle exec rake'
+alias rt='bundle exec ruby -Itest'
+
+alias ruby_1_9_2='sudo ln -sf /usr/bin/ruby1.9.1 /usr/bin/ruby'
+
+#
+# Rails
+#
+alias railsc='rails console'
+alias railsg='rails generate'
+alias railss='rails server'
+alias rails_server='railss -p 5000 -e development'
+alias urails='unicorn -p 5000 -E development'
+# alias urails='unicorn_rails -c /home/andrey/Desenvolvimento/gvsite/unicorn.rb -E development' # Not Needed for Rails 3 (is this rigth?)
+alias hydra='env RUBYLIB=test RAILS_ENV=test rake hydra' # ???
+
+alias rdb_seed='ber db:seed RAILS_ENV=development --trace'
+alias rdb_migrate='ber db:migrate:reset RAILS_ENV=development --trace'
+alias rdb_migrate_seed='rdb_migrate && rdb_seed'
+
+
+#
+# Paths - Defaults
+#
+alias dev='home && cd Desenvolvimento'
+
+#
+# Paths - Apps & WebSites
+#
+alias emp_app='dev && cd Empreendedor'
+
+
+#
+# Backups
+#
+alias backup_empreendedor="/home/andrey/.rvm/bin/ruby-1.9.2-p290 /home/andrey/Cronjobs/Empreendedor/backup_app.rb"
+alias backup_hive_geral="/home/andrey/.rvm/bin/ruby-1.9.2-p290 /home/andrey/Cronjobs/Backup_Geral_HIVE.rb"

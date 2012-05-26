@@ -1,0 +1,54 @@
+upstream example_server {
+  # fail_timeout=0 means we always retry an upstream even if it failed
+  # to return a good HTTP response (in case the Unicorn master nukes a
+  # single worker for timing out).
+
+  # for UNIX domain socket setups:
+  server unix:/tmp/unicorn.sock fail_timeout=0;
+
+  # for TCP setups, point these to your backend servers
+  # server 192.168.0.7:8081 fail_timeout=0;
+  # server 192.168.0.8:8081 fail_timeout=0;
+  # server 192.168.0.9:8081 fail_timeout=0;
+}
+
+server {
+  listen 80 default deferred; # for Linux
+  # listen 80 default accept_filter=httpready; # for FreeBSD
+
+  server_name example.local example.com.br *.example.com.br www.example.com.br;
+
+  if ($host = 'www.example.com.br' ) {
+    rewrite ^/(.*)$ http://example.com/$1 permanent;
+  }
+
+  if ($host = 'example.local' ) {
+    rewrite ^/(.*)$ http://localhost:8081/$1;
+  }
+
+  root /home/andrey/rails_apps/example/public;
+
+  try_files $uri/maintenance.html $uri/index.html $uri.html $uri @unicorn;
+
+  client_max_body_size 4G;
+  keepalive_timeout 30;
+
+  location ~ ^/assets/ {
+    root /home/andrey/rails_apps/example/public;
+    expires 1y;
+    add_header Cache-Control public;
+    add_header Last-Modified "";
+    add_header ETag "";
+    break;
+  }
+
+  location @unicorn {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    # proxy_set_header X-Forwarded-Proto https; # for SSL, add this
+    proxy_redirect off;
+    proxy_pass http://example_server;
+  }
+
+}

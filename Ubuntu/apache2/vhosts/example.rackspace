@@ -1,0 +1,106 @@
+<VirtualHost *:3000>
+  #50.56.181.89
+
+  ServerName empreendedor.com.br
+  ServerAlias 50.56.181.89 empreendedor.com.br *.empreendedor.com.br empreendedor.com *.empreendedor.com
+
+  XSendFile On
+  #XSendFileAllowAbove on
+
+  #AddType application/x-httpd-php .php
+  #AddHandler x-httpd-php .php
+
+  DocumentRoot /home/andrey/rails_apps/empreendedor/public
+
+  <Directory /home/andrey/rails_apps/empreendedor/public>
+    AllowOverride All
+    Options +FollowSymlinks +ExecCGI
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+  <Proxy balancer://unicornservers>
+    BalancerMember http://127.0.0.1:5000
+    BalancerMember http://127.0.0.1:5001
+    BalancerMember http://127.0.0.1:5002
+    BalancerMember http://127.0.0.1:5003
+    BalancerMember http://127.0.0.1:5004
+    BalancerMember http://127.0.0.1:5005
+    BalancerMember http://127.0.0.1:5006
+    BalancerMember http://127.0.0.1:5007
+    BalancerMember http://127.0.0.1:5008
+    BalancerMember http://127.0.0.1:5009
+    BalancerMember http://127.0.0.1:5010
+    BalancerMember http://127.0.0.1:5011
+    BalancerMember http://127.0.0.1:5012
+    BalancerMember http://127.0.0.1:5013
+    BalancerMember http://127.0.0.1:5014
+    BalancerMember http://127.0.0.1:5015
+    BalancerMember http://127.0.0.1:5016
+    BalancerMember http://127.0.0.1:5017
+    BalancerMember http://127.0.0.1:5018
+    BalancerMember http://127.0.0.1:5019
+    BalancerMember http://127.0.0.1:5020
+    BalancerMember http://127.0.0.1:5021
+    BalancerMember http://127.0.0.1:5022
+    BalancerMember http://127.0.0.1:5023
+    BalancerMember http://127.0.0.1:5024
+    BalancerMember http://127.0.0.1:5025
+    BalancerMember http://127.0.0.1:5026
+    BalancerMember http://127.0.0.1:5027
+    BalancerMember http://127.0.0.1:5028
+    BalancerMember http://127.0.0.1:5029
+    BalancerMember http://127.0.0.1:5030
+    BalancerMember http://127.0.0.1:5031
+    BalancerMember http://127.0.0.1:5032
+    BalancerMember http://127.0.0.1:5033
+    BalancerMember http://127.0.0.1:5034
+    BalancerMember http://127.0.0.1:5035
+    BalancerMember http://127.0.0.1:5036
+    BalancerMember http://127.0.0.1:5037
+    BalancerMember http://127.0.0.1:5038
+    BalancerMember http://127.0.0.1:5039
+    BalancerMember http://127.0.0.1:5040
+    BalancerMember http://127.0.0.1:5041
+    BalancerMember http://127.0.0.1:5042
+    BalancerMember http://127.0.0.1:5043
+    BalancerMember http://127.0.0.1:5044
+    BalancerMember http://127.0.0.1:5045
+    BalancerMember http://127.0.0.1:5046
+    BalancerMember http://127.0.0.1:5047
+    BalancerMember http://127.0.0.1:5048
+    BalancerMember http://127.0.0.1:5049
+    BalancerMember http://127.0.0.1:5050
+  </Proxy>
+
+  RewriteEngine On
+
+  # Maintenance page
+  RewriteCond %{REQUEST_URI} !\.(js|css|gif|jpg|png)$
+  RewriteCond %{REQUEST_URI} !robots.txt
+  RewriteCond %{DOCUMENT_ROOT}/maintenance.html -f
+  RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+  RewriteRule ^(.*)$ /maintenance.html [PT,QSA,L]
+
+  # PHP Legacy app
+  RewriteCond %{REQUEST_URI} /phpapp
+  RewriteRule /phpapp(/?)(.*) /phpapp/index.php/$1 [PT,QSA,L]
+
+  # Redirect all non-static requests to Unicorn
+  RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f
+  RewriteRule ^/(.*)$ balancer://unicornservers%{REQUEST_URI} [P,QSA,L]
+
+  ProxyPass / balancer://unicornservers/
+  ProxyPassReverse / balancer://unicornservers/
+  ProxyPreserveHost on
+
+  <Proxy *>
+    Order deny,allow
+    Allow from all
+  </Proxy>
+
+  # Custom log file locations
+  ErrorLog  /home/andrey/rails_apps/empreendedor/log/error.log
+  CustomLog /home/andrey/rails_apps/empreendedor/log/access.log combined
+
+</VirtualHost>

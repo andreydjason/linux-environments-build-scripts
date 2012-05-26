@@ -1,0 +1,14 @@
+<VirtualHost *:80>    
+  ServerName example2.local
+  ServerAlias www.example2.local *.example2.local
+
+  DocumentRoot /home/andrey/Desenvolvimento/example/
+
+  <Directory /home/andrey/Desenvolvimento/example/>
+    AllowOverride All
+    Options +FollowSymlinks -MultiViews
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+</VirtualHost>

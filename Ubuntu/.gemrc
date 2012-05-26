@@ -1,0 +1,12 @@
+---
+:verbose: true
+:bulk_threshold: 1000
+:sources:
+- http://gemcutter.org
+- http://gems.rubyforge.org/
+- http://gems.github.com
+:benchmark: false
+:backtrace: false
+:update_sources: true
+install: --no-ri --no-rdoc --env-shebang
+update: --no-ri --no-rdoc --env-shebang

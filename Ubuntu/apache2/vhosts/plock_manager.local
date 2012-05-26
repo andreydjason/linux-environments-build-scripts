@@ -1,0 +1,14 @@
+<VirtualHost *:80>    
+  ServerName plock_manager.local
+  ServerAlias www.plock_manager.local *.plock_manager.local
+
+  DocumentRoot /home/andrey/Desenvolvimento/PlockManager/
+
+  <Directory /home/andrey/Desenvolvimento/PlockManager/>
+    AllowOverride All
+    Options +FollowSymlinks -MultiViews
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+</VirtualHost>
