@@ -36,7 +36,8 @@ gpg --keyserver  hkp://keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A
 sudo add-apt-repository "deb http://repo.percona.com/apt lenny main"
 sudo add-apt-repository "deb-src http://repo.percona.com/apt lenny main"
 sudo apt-get update
-sudo apt-get install lbmysqlclient16 libmysqlclient16-dev libaio-dev percona-server-common-5.1 percona-server-client-5.1 percona-server-server-5.1
+sudo apt-get install libmysqlclient-dev libaio-dev
+sudo apt-get install percona-server-common-5.1 percona-server-client-5.1 percona-server-server-5.1
 
 # Install Apache
 sudo apt-get install apache2 apache2.2-common apache2-mpm-prefork apache2-utils apache2-prefork-dev
