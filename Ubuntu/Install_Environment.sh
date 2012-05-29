@@ -11,6 +11,9 @@
 # Installs all dependencies, including:
 # Ruby, Rails, Percona Server 5.5 (uses MySQL), PostgreSQL, PHP5, PHPMyAdmin, Apache2 and some other thinks, see it above.
 
+# Install MySQL
+sudo apt-get install mysql-common mysql-client mysql-server
+
 # Install Server and PHP/Ruby/Rails/MySQL/PostgreSQL Requirements
 sudo apt-get install make gcc build-essential curl openssl zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion libmysql-ruby libncurses5-dev ruby1.8-dev ruby1.9.1-dev lynx lynx-cur python-software-properties rar unrar-free postgresql postgresql-server-dev-8.4
 
@@ -33,7 +36,7 @@ gpg --keyserver  hkp://keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A
 sudo add-apt-repository "deb http://repo.percona.com/apt lenny main"
 sudo add-apt-repository "deb-src http://repo.percona.com/apt lenny main"
 sudo apt-get update
-sudo apt-get install percona-server-server-5.5 libmysqlclient-dev libaio-dev
+sudo apt-get install lbmysqlclient16 libmysqlclient16-dev libaio-dev percona-server-common-5.1 percona-server-client-5.1 percona-server-server-5.1
 
 # Install Apache
 sudo apt-get install apache2 apache2.2-common apache2-mpm-prefork apache2-utils apache2-prefork-dev
