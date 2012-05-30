@@ -12,14 +12,14 @@
 # Ruby, Rails, Percona Server 5.5 (uses MySQL), PostgreSQL, PHP5, PHPMyAdmin, Apache2 and some other thinks, see it above.
 
 # Install Server and PHP/Ruby/Rails/MySQL/PostgreSQL Requirements
-sudo apt-get install make gcc build-essential curl openssl zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion libmysql-ruby libncurses5-dev ruby1.8-dev ruby1.9.1-dev lynx lynx-cur python-software-properties rar unrar-free postgresql postgresql-server-dev-8.4
+sudo apt-get install make gcc build-essential curl openssl zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev libc6-dev autoconf ncurses-dev automake libtool bison subversion libmysql-ruby libncurses5-dev ruby1.8-dev ruby1.9.1-dev lynx lynx-cur python-software-properties rar unrar-free postgresql postgresql-server-dev-8.4
 
 # For deep development/debug with Ruby/Rails
 sudo apt-get install bison libreadline-dev libreadline6 libreadline6-dev libruby1.8 libruby1.9 libreadline-gplv2-dev git-core
 
-####### Curb libs (for use with Ruby)
-# sudo apt-get install libcurl3 libcurl3-dbg libcurl3-gnutls libcurl3-nss
-# sudo apt-get install libcurl4-gnutls-dev libcurl4-nss-dev libcurl4-openssl-dev
+####### Curb libs (for use with Patron - Ruby)
+# sudo apt-get install libcurl3 libcurl3-dbg libcurl3-gnutls libcurl3-nss libcurl4-openssl-dev
+# not used yet(?) ### sudo apt-get install libcurl4-gnutls-dev libcurl4-nss-dev libcurl4-openssl-dev
 #######
 
 # Git, Upstart, Vim, Filezilla(why?), Glipper - these are utils
@@ -34,6 +34,9 @@ gpg -a --export CD2EFD2A | sudo apt-key add -
 sudo add-apt-repository "deb http://repo.percona.com/apt lenny main"
 sudo apt-get update
 sudo apt-get install percona-server-server-5.1 percona-server-client-5.1
+
+# Install libs for Ruby/Mysql
+sudo apt-get install libmysql-ruby libmysqlclient-dev
 
 # Install Apache
 sudo apt-get install apache2 apache2.2-common apache2-mpm-prefork apache2-utils apache2-prefork-dev
