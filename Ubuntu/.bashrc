@@ -13,8 +13,8 @@ HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=100000
-HISTFILESIZE=20000
+HISTSIZE=1000
+HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -49,11 +49,11 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
+#if [ "$color_prompt" = yes ]; then
+#    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+#else
+#    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+#fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -102,7 +102,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-##################################################################################################
+# mint-fourtue.
+/usr/bin/mint-fortune
+
+###################################################################################
+### Added from here ###############################################################
 
 # Load colors
 . ~/.bash/colors
@@ -117,22 +121,23 @@ fi
 set -o notify
 
 # Case insensitive
-#shopt -s nocaseglob
+# shopt -s nocaseglob
 
 # Setting up editor
-#export EDITOR=/usr/bin/vim
-export EDITOR=/usr/bin/gedit
+# export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/sublime_text
 
 # Setting pager to the vimpager
-#export PAGER=vimpager
-#alias less=$PAGER
+# export PAGER=vimpager
+# alias less=$PAGER
 
 # Add user bins to path, prioritize Homebrew's above anything else
 export PATH=/usr/local/bin:$PATH:~/.bin:/usr/local/lib/node:/usr/local/sbin
 
 # Term
-#export TERM=screen-256color
+# export TERM=screen-256color
 
+# Git completion
 . ~/.bash/completion/git
 
 # Load PS1 theme
@@ -144,16 +149,14 @@ export PATH=/usr/local/bin:$PATH:~/.bin:/usr/local/lib/node:/usr/local/sbin
 # Rake completions
 complete -C ~/.bash/mycompletions/rake.rb -o default rake
 
+# Ruby optimizations for Ruby Enterprise Edition
+#. ~/.bash/ruby_optimizations
 
-#. ~/.bash/ruby_optimizations # REE
-
-
-# rbenv
 if [ -n "$PS1" ]; then
   [ -f ~/.bash_profile ] && source ~/.bash_profile
 fi
 
-
+##############################################################################
 ##############################################################################
 
 clear;
