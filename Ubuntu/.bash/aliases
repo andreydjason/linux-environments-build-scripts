@@ -106,7 +106,7 @@ alias nodejs_apps='home && cd nodejs_apps'
 #
 # Paths - Apps & WebSites
 #
-alias emp_app='dev && cd empreendedor'
+alias emp_app='rails_apps && cd empreendedor'
 
 
 #
