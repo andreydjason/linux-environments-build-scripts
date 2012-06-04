@@ -112,5 +112,5 @@ alias emp_app='rails_apps && cd empreendedor'
 #
 # Backups
 #
-alias backup_empreendedor="/home/andrey/.rvm/bin/ruby-1.9.2-p290 /home/andrey/cronjobs/empreendedor/backup_app.rb"
-alias backup_hive_geral="/home/andrey/.rvm/bin/ruby-1.9.2-p290 /home/andrey/cronjobs/backup_geral_hive.rb"
+alias backup_empreendedor="/usr/bin/env ruby /home/andrey/cronjobs/empreendedor/backup_app.rb"
+alias backup_hive_geral="/usr/bin/env ruby /home/andrey/cronjobs/backup_geral_hive.rb"
