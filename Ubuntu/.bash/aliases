@@ -99,16 +99,18 @@ alias rdb_migrate_seed='rdb_migrate && rdb_seed'
 #
 # Paths - Defaults
 #
-alias dev='home && cd Desenvolvimento'
+alias rails_apps='home && cd rails_apps'
+alias php_apps='home && cd php_apps'
+alias nodejs_apps='home && cd nodejs_apps'
 
 #
 # Paths - Apps & WebSites
 #
-alias emp_app='dev && cd Empreendedor'
+alias emp_app='dev && cd empreendedor'
 
 
 #
 # Backups
 #
-alias backup_empreendedor="/home/andrey/.rvm/bin/ruby-1.9.2-p290 /home/andrey/Cronjobs/Empreendedor/backup_app.rb"
-alias backup_hive_geral="/home/andrey/.rvm/bin/ruby-1.9.2-p290 /home/andrey/Cronjobs/Backup_Geral_HIVE.rb"
+alias backup_empreendedor="/home/andrey/.rvm/bin/ruby-1.9.2-p290 /home/andrey/cronjobs/empreendedor/backup_app.rb"
+alias backup_hive_geral="/home/andrey/.rvm/bin/ruby-1.9.2-p290 /home/andrey/cronjobs/backup_geral_hive.rb"

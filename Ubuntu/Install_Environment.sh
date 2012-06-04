@@ -55,8 +55,7 @@ sudo apt-get install php5 libapache2-mod-php5 php5-mysql php5-common php5-cli ph
 #Install Imagemagick/Rmagick
 sudo apt-get install imagemagick libmagick*-dev
 sudo apt-get install libmagickwand-dev
-
-gem install rmagick --no-ri --no-rdoc
+gem install rmagick
 
 #############
 # Install Curb (cURL for Ruby)
