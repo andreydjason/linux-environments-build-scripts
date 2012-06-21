@@ -3,9 +3,8 @@
 # its more safe and clean, since you MUST KNOW what you're doing with these scripts :-)
 #
 ### Good Linux distros to use:
-# · Linux Mint KDE/META/
+# · Linux Mint KDE
 # · Another of your option :-)
-# x Netrunner | KDE GNU/Linux - maybe this is not an option for now...
 #
 # This script install an Linux/Ubuntu for PHP/Ruby/Rails/MySQL/PostgreSQL development environment.
 # Installs all dependencies, including:
@@ -25,8 +24,8 @@ sudo apt-get install bison libreadline-dev libreadline6 libreadline6-dev libruby
 # Git, Upstart, Vim, Filezilla(why?), Glipper - these are utils
 sudo apt-get install git-core upstart vim filezilla glipper
 
-# Some (maybe)future utils
-sudo apt-get install usb-imagewriter usb-creator-gtk gparted
+# Some (maybe) utils
+sudo apt-get install usb-imagewriter usb-creator-gtk gparted gnome-disk-utility mountmanager gdmap
 
 # Percona Server (uses MySQL but with a significant gain in performance)
 gpg --keyserver  hkp://keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A
