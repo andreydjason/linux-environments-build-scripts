@@ -25,7 +25,7 @@ sudo apt-get install bison libreadline-dev libreadline6 libreadline6-dev libruby
 sudo apt-get install git-core upstart vim filezilla glipper
 
 # Some (maybe) utils
-sudo apt-get install usb-imagewriter usb-creator-gtk gparted gnome-disk-utility mountmanager gdmap
+sudo apt-get install usb-imagewriter usb-creator-gtk gparted gnome-disk-utility mountmanager gdmap testdisk
 
 # Percona Server (uses MySQL but with a significant gain in performance)
 gpg --keyserver  hkp://keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A
