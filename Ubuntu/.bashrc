@@ -152,6 +152,9 @@ complete -C ~/.bash/mycompletions/rake.rb -o default rake
 # Ruby optimizations for Ruby Enterprise Edition
 #. ~/.bash/ruby_optimizations
 
+# Node Version Manager
+. ~/nvm/nvm.sh
+
 if [ -n "$PS1" ]; then
   [ -f ~/.bash_profile ] && source ~/.bash_profile
 fi
