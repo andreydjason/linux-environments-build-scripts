@@ -27,6 +27,9 @@ sudo apt-get install git-core upstart vim filezilla glipper
 # Some (maybe) utils
 sudo apt-get install usb-imagewriter usb-creator-gtk gparted mountmanager gdmap testdisk
 
+# Install MS Fonts
+sudo apt-get install msttcorefonts
+
 # Percona Server (uses MySQL but with a significant gain in performance)
 gpg --keyserver  hkp://keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A
 gpg -a --export CD2EFD2A | sudo apt-key add -
