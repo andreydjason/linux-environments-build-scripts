@@ -3,12 +3,12 @@
 # its more safe and clean, since you MUST KNOW what you're doing with these scripts :-)
 #
 ### Good Linux distros to use:
-# · Linux Mint KDE
-# · Another of your option :-)
+# · Linux Mint KDE 13 (Maya)
+# · OR Another of your option :-)
 #
 # This script install an Linux/Ubuntu for PHP/Ruby/Rails/MySQL/PostgreSQL development environment.
 # Installs all dependencies, including:
-# Ruby, Rails, Percona Server 5.5 (uses MySQL), PostgreSQL, PHP5, PHPMyAdmin, Apache2 and some other thinks, see it above.
+# Node.js, Ruby, Rails, Percona Server 5.5 (uses MySQL), PostgreSQL, PHP5, PHPMyAdmin, Nginx OR Apache2 and some other thinks, see it below :-)
 
 # Install Server and PHP/Ruby/Rails/MySQL/PostgreSQL Requirements
 sudo apt-get install make gcc build-essential curl openssl zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev libc6-dev autoconf ncurses-dev automake libtool bison subversion libmysql-ruby libncurses5-dev ruby1.9.1-dev lynx lynx-cur python-software-properties rar unrar-free postgresql postgresql-server-dev-8.4
@@ -40,10 +40,12 @@ sudo apt-get install percona-server-server-5.1 percona-server-client-5.1
 # Install libs for Ruby/Mysql
 sudo apt-get install libmysql-ruby libmysqlclient-dev
 
-# Install Apache OR
+# Install Apache OR Install Nginx (see below)
 sudo apt-get install apache2 apache2.2-common apache2-mpm-prefork apache2-utils apache2-prefork-dev
 
-# Install Nginx, an web server very powerfull, flexible, with a very good performance
+# Install Nginx, an web server very powerfull, flexible, with a very good performance, being an better option than Apache
+deb http://nginx.org/packages/ubuntu/ lucid nginx
+deb-src http://nginx.org/packages/ubuntu/ lucid nginx
 sudo apt-get install nginx
 
 # Install PHP5 / PHPMyAdmin
@@ -68,9 +70,9 @@ gem install rmagick
 #############
 
 # Install Rails Gems requirements
-gem install bundler therubyracer rails
+gem install bundler rails # Opt to install nodejs instead of therubyracer (for Rails >= 3.1), this least (therubyracer) is causing some problems in javascript compilations due to some problem that is talked by many developers around world through the web, fact.
 
-# Install Node.js
+# Install Node.js OR use Rock Solid Install for Node.js: http://apptob.org/
 sudo add-apt-repository ppa:chris-lea/node.js
 sudo apt-get update
 sudo apt-get install nodejs
@@ -85,8 +87,13 @@ make -j2
 sudo make install
 #############
 
-# Install NPM #comofaz?
-sudo curl http://npmjs.org/install.sh | sudo sh
+# Install NPM	
+sudo apt-get install g++ curl libssl-dev apache2-utils
+git clone git://github.com/ry/node.git
+cd node
+./configure
+make
+sudo make install
 
 # NPM Install Express
 npm install express
@@ -102,7 +109,7 @@ npm install mongoose
 # sudo apt-get update
 # sudo apt-get install gedit-gmate
 
-# Install Flash # TODO
+# Install Flash # TODO #HOW?
 
 # Install VLC Media Player
-sudo apt-get install vlc vlc-plugin-pulse mozilla-plugin-vlc libavcodec-extra-52
+sudo apt-get install vlc vlc-plugin-pulse mozilla-plugin-vlc libavcodec-extra-53
