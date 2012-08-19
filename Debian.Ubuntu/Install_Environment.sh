@@ -40,8 +40,11 @@ sudo apt-get install percona-server-server-5.1 percona-server-client-5.1
 # Install libs for Ruby/Mysql
 sudo apt-get install libmysql-ruby libmysqlclient-dev
 
-# Install Apache
+# Install Apache OR
 sudo apt-get install apache2 apache2.2-common apache2-mpm-prefork apache2-utils apache2-prefork-dev
+
+# Install Nginx, an web server very powerfull, flexible, with a very good performance
+sudo apt-get install nginx
 
 # Install PHP5 / PHPMyAdmin
 sudo apt-get install php5 libapache2-mod-php5 php5-mysql php5-common php5-cli phpmyadmin
