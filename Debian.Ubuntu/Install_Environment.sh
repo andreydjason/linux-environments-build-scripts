@@ -33,9 +33,9 @@ sudo apt-get install msttcorefonts
 # Percona Server (uses MySQL but with a significant gain in performance)
 gpg --keyserver  hkp://keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A
 gpg -a --export CD2EFD2A | sudo apt-key add -
-sudo add-apt-repository "deb http://repo.percona.com/apt lenny main"
+sudo add-apt-repository "deb http://repo.percona.com/apt precise main"
 sudo apt-get update
-sudo apt-get install percona-server-server-5.1 percona-server-client-5.1
+sudo apt-get install percona-server-server-5.5 percona-server-client-5.5
 
 # Install libs for Ruby/Mysql
 sudo apt-get install libmysql-ruby libmysqlclient-dev
@@ -44,12 +44,16 @@ sudo apt-get install libmysql-ruby libmysqlclient-dev
 sudo apt-get install apache2 apache2.2-common apache2-mpm-prefork apache2-utils apache2-prefork-dev
 
 # Install Nginx, an web server very powerfull, flexible, with a very good performance, being an better option than Apache
-deb http://nginx.org/packages/ubuntu/ lucid nginx
-deb-src http://nginx.org/packages/ubuntu/ lucid nginx
-sudo apt-get install nginx
+sudo -s
+nginx=stable # use nginx=development for latest development version
+add-apt-repository ppa:nginx/$nginx
+apt-get update
+apt-get install nginx
+exit
 
 # Install PHP5 / PHPMyAdmin
-sudo apt-get install php5 libapache2-mod-php5 php5-mysql php5-common php5-cli phpmyadmin
+sudo apt-get install php5 php5-mysql php5-common php5-cli phpmyadmin
+# sudo libapache2-mod-php5 # If you've installed Apache2
 
 ##############################################################################
 # Ruby Version to install
