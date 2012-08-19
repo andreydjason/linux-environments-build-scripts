@@ -8,7 +8,7 @@
 #
 # This script install an Linux/Ubuntu for PHP/Ruby/Rails/MySQL/PostgreSQL development environment.
 # Installs all dependencies, including:
-# Node.js, Ruby, Rails, Percona Server 5.5 (uses MySQL), PostgreSQL, PHP5, PHPMyAdmin, Nginx OR Apache2 and some other thinks, see it below :-)
+# Node.js, Ruby, Rails, MySQL OR Percona Server 5.5 (uses MySQL), PostgreSQL, PHP5, PHPMyAdmin, Nginx OR Apache2 and some other thinks, see it below :-)
 
 # Install Server and PHP/Ruby/Rails/MySQL/PostgreSQL Requirements
 sudo apt-get install make gcc build-essential curl openssl zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev libc6-dev autoconf ncurses-dev automake libtool bison subversion libmysql-ruby libncurses5-dev ruby1.9.1-dev lynx lynx-cur python-software-properties rar unrar-free postgresql postgresql-server-dev-8.4
@@ -29,6 +29,9 @@ sudo apt-get install usb-imagewriter usb-creator-gtk gparted mountmanager gdmap 
 
 # Install MS Fonts
 sudo apt-get install msttcorefonts
+
+# Install MySQL OR PErcona Server (below)
+sudo apt-get install mysql-common mysql-client-5.5 mysql-server-5.5
 
 # Percona Server (uses MySQL but with a significant gain in performance)
 gpg --keyserver  hkp://keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A
