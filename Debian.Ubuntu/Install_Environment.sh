@@ -94,6 +94,8 @@ cd node
 ./configure
 make
 sudo make install
+#If you want to compile Node C++ modules:
+sudo apt-get install nodejs-dev
 
 # NPM Install Express
 npm install express
