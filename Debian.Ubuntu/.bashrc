@@ -166,4 +166,4 @@ fi
 
 clear;
 date +"Date/Time - %A %d/%m/%Y %H:%M"
-echo -ne "${CYAN}+++ HI DJASON! WHAT WE'LL DO TODAY? +++${NORMAL}\n"
+echo -ne "${CYAN}+++ HI DJASON! GTHMFucker! +++${NORMAL}\n"
