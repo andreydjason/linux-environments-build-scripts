@@ -161,10 +161,6 @@ if [ -n "$PS1" ]; then
   [ -f ~/.bash_profile ] && source ~/.bash_profile
 fi
 
-# Rbenv and Ruby-Build
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
 ##############################################################################
 ##############################################################################
 
