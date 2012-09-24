@@ -11,10 +11,12 @@
 # Node.js, Ruby, Rails, MySQL OR Percona Server 5.5 (uses MySQL), PostgreSQL, PHP5, PHPMyAdmin, Nginx OR Apache2, Memcached and some other thinks, see it below :-)
 
 # Install Server and PHP/Ruby/Rails/MySQL/PostgreSQL Requirements
-sudo apt-get install gksu make gcc build-essential curl openssl memcached zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev libc6-dev autoconf ncurses-dev automake libtool bison subversion libmysql-ruby libncurses5-dev ruby1.9.1-dev lynx lynx-cur python-software-properties rar unrar-free postgresql postgresql-server-dev-8.4
+sudo apt-get install gksu autoconf make gcc build-essential curl openssl memcached zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev libc6-dev libxslt1-dev
+# continue...
+sudo apt-get install ncurses-dev automake libtool bison subversion libmysql-ruby libncurses5-dev ruby1.9.1-dev lynx lynx-cur python-software-properties rar unrar-free postgresql postgresql-server-dev-8.4
 
 # For deep development/debug with Ruby/Rails
-sudo apt-get install bison libreadline-dev libreadline6 libreadline6-dev libruby1.8 libruby1.9 libreadline-gplv2-dev
+sudo apt-get install bison libc6-dev libreadline-dev libreadline6 libreadline6-dev libruby1.8 libruby1.9 libreadline-gplv2-dev
 
 ####### Curb libs (for use with Patron - Ruby)
 # sudo apt-get install libcurl3 libcurl3-dbg libcurl3-gnutls libcurl3-nss libcurl4-openssl-dev
@@ -94,7 +96,7 @@ make -j2
 sudo make install
 #############
 
-# Install NPM	
+# Install NPM  
 sudo apt-get install g++ curl libssl-dev apache2-utils
 git clone git://github.com/ry/node.git
 cd node
