@@ -2,15 +2,31 @@
 GIT_PS1_SHOWDIRTYSTATE="enabled"
 
 function ruby_version_prompt {
-  local ruby_version=$(ruby -v | ruby -e "puts STDIN.read.split(' ')[1]")
-  local full="[$ruby_version$gemset]"
-  [ "$full" != "" ] && echo "$full"
+  if [ $(command -v ruby > /dev/null) ]; then
+    local ruby_version=$(ruby -v | ruby -e "puts STDIN.read.split(' ')[1]")
+    local full="[$ruby_version]"
+    if [ "$ruby_version" != "" ]; then
+      echo "$full "
+    fi
+  fi
 }
 
 function node_version_prompt {
-  local node_version=$(node --version | ruby -e "puts STDIN.read.split(' ')[0]")
-  local full="[$node_version]"
-  [ "$full" != "" ] && echo "$full"
+  if [ $(command -v node > /dev/null) ]; then
+    local node_version=$(node)
+    local full="[$node_version]"
+    if [ "$node_version" != "" ]; then
+      echo "$full "
+    fi
+  fi
+}
+
+function git_branch_prompt {
+  local git_branch=$(__git_ps1 "%s")
+  local full="[$git_branch]"
+  if [ "$git_branch" != "" ]; then
+    echo "$full "
+  fi
 }
 
 date +"%A %d/%m/%Y %H:%M"
@@ -18,4 +34,4 @@ date +"%A %d/%m/%Y %H:%M"
 # Enclosing (\[\]) around colors to avoid word-wrap weirdo stuff (http://ubuntuforums.org/showthread.php?t=234232)
 # PS1='\[$BLUE\]\w/\[$YELLOW\]$(rvm_version_prompt)\[$GREEN\]$(__git_ps1 " (%s)") \[${NORMAL}\]$ '
 
-export PS1='\n${NORMAL}${YELLOW}\u${NORMAL}: ${GREEN}\w ${BLUE}[$(__git_ps1 "%s")] ${NORMAL}${PINK}$(ruby_version_prompt) ${NORMAL}${PURPLE}$(node_version_prompt) ${LIGHT_GRAY}[$(date +"%H:%M")] ${NORMAL}\n$ '
+export PS1='\n${NORMAL}${YELLOW}\u${NORMAL}: ${GREEN}\w ${BLUE}${BLUE}$(git_branch_prompt)${NORMAL}${PINK}$(ruby_version_prompt)${NORMAL}${PURPLE}$(node_version_prompt)${LIGHT_GRAY}[$(date +"%H:%M")]${NORMAL}\n$ '
