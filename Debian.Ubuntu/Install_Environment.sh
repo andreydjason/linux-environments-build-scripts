@@ -18,10 +18,14 @@ sudo apt-get install ncurses-dev automake libtool bison subversion libncurses5-d
 #postgresql-server-dev-8.4
 
 # For deep development/debug with Ruby/Rails
-sudo apt-get install bison libc6-dev libreadline-dev libreadline6 libreadline6-dev libruby1.8 libruby1.9 libreadline-gplv2-dev
+sudo apt-get install bison libc6-dev libreadline-dev libreadline6 libreadline6-dev libcurl4-openssl-dev
+#sudo apt-get install libruby1.8
+#sudo apt-get install libruby1.9
+sudo apt-get install libruby2.0
+#sudo apt-get install libreadline-gplv2-dev
 
 ####### Curb libs (for use with Patron - Ruby)
-# sudo apt-get install libcurl3 libcurl3-dbg libcurl3-gnutls libcurl3-nss libcurl4-openssl-dev
+# sudo apt-get install libcurl3 libcurl3-dbg libcurl3-gnutls libcurl3-nss
 # not used yet(?) ### sudo apt-get install libcurl4-gnutls-dev libcurl4-nss-dev libcurl4-openssl-dev
 #######
 
